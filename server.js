@@ -87,6 +87,9 @@ const assessment_trivia = require('./routes/assessment-routes');
 // Login
 const login_routes = require('./routes/login-routes');
 
+// Game
+const game_routes = require('./routes/game-routes');
+
 const port = process.env.PORT || 80;
 
 const URI=process.env.DB_CONNECTION;
@@ -109,7 +112,7 @@ app.use(bodyParser.json());
 
 // This causes bug in API. Enable only if dockerizing it.
 // See : https://chat.openai.com/share/99b39e15-397a-496c-8689-1d023344b37d
-app.use(history());
+// app.use(history());
 
 app.use(express.static(path.join(__dirname, 'dist/ecotopia-capstone')));
 
@@ -165,6 +168,8 @@ app.use('/', assessment_trivia);
 // Login
 app.use('/', login_routes);
 
+// Game
+app.use('/', game_routes);
 
 app.listen(port, ()=>{
     console.log(`Listening on ${port}`);
