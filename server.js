@@ -18,7 +18,7 @@ app.disable('x-powered-by');
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'", "http://localhost"], 
+    defaultSrc: ["'self'", "http://localhost", "https://ecotopiabeta.live"], 
     scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
     styleSrc: ["'self'", "https://fonts.googleapis.com", "https://unpkg.com/aos@2.3.1/dist/aos.css", "https://pro.fontawesome.com/releases/v5.10.0/css/all.css", "https://fonts.cdnfonts.com/css/henry-sans", "'unsafe-inline'"],
     imgSrc: ["'self'", "data:", "blob:", "'unsafe-inline'"],
