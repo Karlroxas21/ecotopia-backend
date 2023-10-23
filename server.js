@@ -96,7 +96,7 @@ const URI=process.env.DB_CONNECTION;
 
 mongoose.connect(URI)
 
-const allowedOrigin = ['vast-chipmunk-pmtbqfn8dn3rzmindozaebrn.herokudns.com', 'vast-chipmunk-pmtbqfn8dn3rzmindozaebrn.herokudns.com'];
+const allowedOrigin = ['vast-chipmunk-pmtbqfn8dn3rzmindozaebrn.herokudns.com', 'ecotopia-kwatro-1d9051e0c450.herokuapp.com', 'ecotopia.live'];
 
 // CORS Middleware
 const corsOptions = {
