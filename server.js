@@ -12,15 +12,14 @@ const app = express();
 
 const helmet = require('helmet');
 
-
 // Remove the "X-Powered-By" header
 app.disable('x-powered-by');
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'", "http://localhost", "https://ecotopiabeta.live"], 
+    defaultSrc: ["'self'", "http://localhost", "https://ecotopiabeta.live", "https://ecotopia.live"], 
     scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
-    styleSrc: ["'self'", "https://fonts.googleapis.com", "https://unpkg.com/aos@2.3.1/dist/aos.css", "https://pro.fontawesome.com/releases/v5.10.0/css/all.css", "https://fonts.cdnfonts.com/css/henry-sans", "'unsafe-inline'"],
+    styleSrc: ["'self'", "https://ecotopia.live", "localhost:4200", "https://fonts.googleapis.com", "https://unpkg.com/aos@2.3.1/dist/aos.css", "https://pro.fontawesome.com/releases/v5.10.0/css/all.css", "https://fonts.cdnfonts.com/css/henry-sans", "'unsafe-inline'"],
     imgSrc: ["'self'", "data:", "blob:", "'unsafe-inline'"],
     scriptSrcAttr: ["'unsafe-inline'"],
     reportTo: ["'csp-endpoint'"]
@@ -38,6 +37,7 @@ app.use((req, res, next) =>{
   res.setHeader('X-Content-Type-Options', 'nosniff');
   next();
 })
+
 // Routes
 
 // Admin Cases Routes
