@@ -15,6 +15,11 @@ const helmet = require('helmet');
 // Remove the "X-Powered-By" header
 app.disable('x-powered-by');
 
+app.use((req, res, next) => {
+  res.setHeader('Referrer-Policy', 'same-origin');
+  next();
+});
+
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'", "http://localhost", "https://ecotopiabeta.live", "https://ecotopia.live"], 
