@@ -13,7 +13,11 @@ const app = express();
 const helmet = require('helmet');
 
 // Remove the "X-Powered-By" header
-app.disable('x-powered-by');
+app.disable('x-powered-by'); // not working
+app.use(function (req, res, next ){
+  res.removeHeader("X-Powered-By");
+  next();
+})
 
 app.use((req, res, next) => {
   res.setHeader('Referrer-Policy', 'same-origin');
