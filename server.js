@@ -12,6 +12,8 @@ const app = express();
 
 const helmet = require('helmet');
 
+const expressStaticGzip = require('express-static-gzip');
+
 // Remove the "X-Powered-By" header
 app.disable('x-powered-by'); // not working
 app.use(function (req, res, next ){
@@ -123,12 +125,25 @@ app.use(bodyParser.json());
 // See : https://chat.openai.com/share/99b39e15-397a-496c-8689-1d023344b37d
 app.use(history());
 
-app.use(express.static(path.join(__dirname, 'dist/ecotopia-capstone')));
+// app.use(express.static(path.join(__dirname, 'dist/ecotopia-capstone')));
 
-app.get('/', (req, res) => {
-  res.
-  sendFile(path.join(__dirname, 'dist/ecotopia-capstone/index.html'));
-});
+app.use('/', expressStaticGzip(path.join(__dirname, 'dist/ecotopia-capstone'), {
+  enableBrotli: true,
+  orderPreference: ['br', 'gz'],
+  setHeader: function(res, path){
+    res.setHeader("Cache-Control", "public, max-age=31536000");
+  }
+}));
+
+// app.get('/', (req, res) => {
+//   res.
+//   sendFile(path.join(__dirname, 'dist/ecotopia-capstone/index.html'));
+// });
+
+app.get('/', (req, res) =>{
+  res.sendFile(path.join(__dirname,
+    'dist/ecotopia-capstone/index.html'));
+})
 
 // Admin Cases
 app.use('/', admin_case_routes );
