@@ -70,6 +70,9 @@ const admin_current_issues_ph_routes = require('./routes/admin/current-issues-ph
 // Admin Assessment
 const admin_assessment_routes = require('./routes/admin/assessment-routes');
 
+// Admin Manage Account
+const admin_manage_account = require('./routes/admin/manage-account-routes');
+
 // Cases
 const cases_routes = require('./routes/cases/cases-routes');
 const causes_climate_change_routes = require('./routes/cases/causes-climate-change-routes');
@@ -123,7 +126,7 @@ app.use(bodyParser.json());
 
 // This causes bug in API. Enable only if dockerizing it.
 // See : https://chat.openai.com/share/99b39e15-397a-496c-8689-1d023344b37d
-app.use(history());
+// app.use(history());
 
 // app.use(express.static(path.join(__dirname, 'dist/ecotopia-capstone')));
 
@@ -163,6 +166,9 @@ app.use('/', admin_current_issues_ph_routes );
 
 // Admin Assessment
 app.use('/', admin_assessment_routes);
+
+// Admin Manage Account
+app.use('/', admin_manage_account);
 
 // Cases
 app.use('/', cases_routes );

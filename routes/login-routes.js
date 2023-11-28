@@ -26,7 +26,12 @@ app.post("/login", async (req, res) => {
     if (!user) {
         // User not found
         return res.status(404).json({ message: "User not found" });
-      }
+    }
+
+    // User status
+    // if(user.status !== 'Verified'){
+    //   return res.status(403).json({ message: "Account is not verified"});
+    // }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
@@ -37,7 +42,7 @@ app.post("/login", async (req, res) => {
     // Create JWT Token
     const token = jwt.sign({ userId: user._id}, secretKey, { expiresIn: '1h'});
   
-    res.status(200).json({ token});
+    res.status(200).json({ token, status: user.status, role: user.role, username: user.username});
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Internal server error" });
