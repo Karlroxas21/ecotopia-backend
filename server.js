@@ -120,7 +120,7 @@ const corsOptions = {
   allowedHeaders: 'Content-Type', 
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
