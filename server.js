@@ -110,7 +110,7 @@ const URI=process.env.DB_CONNECTION;
 
 mongoose.connect(URI)
 
-const allowedOrigin = ['vast-chipmunk-pmtbqfn8dn3rzmindozaebrn.herokudns.com', 'ecotopia-kwatro-1d9051e0c450.herokuapp.com', 'ecotopia.live', 'ecotopia.systems', 'behavioral-hippopotamus-f1axrqi1hs5ekimch0sn29ws.herokudns.com'];
+const allowedOrigin = ['vast-chipmunk-pmtbqfn8dn3rzmindozaebrn.herokudns.com', 'ecotopia-kwatro-1d9051e0c450.herokuapp.com', 'ecotopia.live', 'ecotopia.systems', 'behavioral-hippopotamus-f1axrqi1hs5ekimch0sn29ws.herokudns.com', 'localhost'];
 
 // CORS Middleware
 const corsOptions = {
