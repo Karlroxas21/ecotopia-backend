@@ -114,8 +114,7 @@ const allowedOrigin = ['vast-chipmunk-pmtbqfn8dn3rzmindozaebrn.herokudns.com', '
 
 // CORS Middleware
 const corsOptions = {
-  origin: allowedOrigin,
-  origin: 'localhost', 
+  origin: allowedOrigin, 
   methods: 'GET,POST,PUT',           
   allowedHeaders: 'Content-Type', 
 };
